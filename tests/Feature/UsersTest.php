@@ -16,7 +16,7 @@ it('returns a successful response', function () {
 
     $this->get('/api/users')
         ->assertOk()
-        ->assertJsonCount(4,'data');
+        ->assertJsonCount(4, 'data');
 });
 
 it('has default order by id desc', function () {
@@ -26,7 +26,7 @@ it('has default order by id desc', function () {
 
     $this->get('/api/users')
         ->assertOk()
-        ->assertJsonCount(4,'data')
+        ->assertJsonCount(4, 'data')
         ->assertSeeTextInOrder([$first->name, $last->name]);
 });
 
@@ -36,7 +36,7 @@ it('can filter by user role', function () {
 
     $this->get('/api/users?role=admin')
         ->assertOk()
-        ->assertJsonCount(1,'data')
+        ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', $admin->name)
         ->assertJsonPath('data.0.email', $admin->email)
         ->assertJsonPath('data.0.role', $admin->role)
@@ -53,7 +53,7 @@ it('can filter by user country', function () {
 
     $this->get('/api/users?country=Niger')
         ->assertOk()
-        ->assertJsonCount(1,'data')
+        ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', $niger->name)
         ->assertJsonPath('data.0.email', $niger->email)
         ->assertJsonPath('data.0.country', $niger->country)
@@ -61,7 +61,5 @@ it('can filter by user country', function () {
             'name' => $gambia->name,
             'email' => $gambia->email,
             'country' => $gambia->country,
-        ])
-    ;
+        ]);
 });
-

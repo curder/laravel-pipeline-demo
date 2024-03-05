@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UsersResource;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -16,8 +16,8 @@ class UsersController extends Controller
             ->when($request->has('role'), function (Builder $query) use ($request) {
                 return $query->where('role', $request->role);
             })
-            ->when($request->has('country'), function(Builder $query) use ($request) {
-                return $query->where('country',$request->country);
+            ->when($request->has('country'), function (Builder $query) use ($request) {
+                return $query->where('country', $request->country);
             })
             ->orderByDesc('id')
             ->paginate();

@@ -3,22 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Filters\ByRole;
+use App\Filters\ByCountry;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UsersResource;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Pipeline;
 
 class UsersController extends Controller
 {
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
-        $users = User::query()
-            ->when($request->has('role'), function (Builder $query) use ($request) {
-                return $query->where('role', $request->role);
-            })
-            ->when($request->has('country'), function (Builder $query) use ($request) {
-                return $query->where('country', $request->country);
-            })
+        $pipelines = [
+            ByRole::class,
+            ByCountry::class,
+        ];
+
+        $users = Pipeline::send(User::query())
+            ->through($pipelines)
+            ->thenReturn()
             ->orderByDesc('id')
             ->paginate();
 

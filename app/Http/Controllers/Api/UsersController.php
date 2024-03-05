@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
+use App\Filters\ByCountry;
 use App\Filters\ByName;
 use App\Filters\ByRole;
-use App\Filters\ByCountry;
-use Illuminate\Http\Request;
 use App\Http\Resources\UsersResource;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Pipeline;
 
-class UsersController
+final class UsersController
 {
     public function __invoke(Request $request)
     {

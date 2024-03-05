@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources;
 
 use App\Models\User;
@@ -9,7 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @property User $resource
  */
-class UsersResource extends JsonResource
+final class UsersResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

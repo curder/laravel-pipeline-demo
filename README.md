@@ -1,5 +1,8 @@
 # Pipeline
 
+[![Check & fix styling](https://github.com/curder/laravel-pipeline-demo/actions/workflows/pint.yml/badge.svg?branch=master)](https://github.com/curder/laravel-pipeline-demo/actions/workflows/pint.yml)
+[![Test Laravel Github action](https://github.com/curder/laravel-pipeline-demo/actions/workflows/run-test.yml/badge.svg?branch=master)](https://github.com/curder/laravel-pipeline-demo/actions/workflows/run-test.yml)
+
 Laravel Pipeline 的简单示例。
 
 ## 项目初始化

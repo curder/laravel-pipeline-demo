@@ -63,3 +63,29 @@ it('can filter by user country', function () {
             'country' => $gambia->country,
         ]);
 });
+
+it('can filter by user name', function () {
+    $example = User::factory()->create(['name' => 'ExampleUser']);
+    $guest = User::factory()->create(['name' => 'GuestUser']);
+    $another = User::factory()->create(['name' => 'Another']);
+
+    $this->get('/api/users?name=user')
+        ->assertOk()
+        ->assertJsonCount(2, 'data');
+
+    $this->get('/api/users?name=guest')
+        ->assertOk()
+        ->assertJsonCount(1, 'data')
+        ->assertJsonPath('data.0.name', $guest->name)
+        ->assertJsonPath('data.0.email', $guest->email)
+        ->assertJsonPath('data.0.country', $guest->country)
+        ->assertJsonMissingExact([
+            'name' => $example->name,
+            'email' => $example->email,
+            'country' => $example->country,
+        ])->assertJsonMissingExact([
+            'name' => $another->name,
+            'email' => $another->email,
+            'country' => $another->country,
+        ]);
+});

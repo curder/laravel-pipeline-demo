@@ -15,6 +15,7 @@ class UsersController extends Controller
     public function __invoke(Request $request)
     {
         $pipelines = [
+            \App\Filters\ByName::class,
             ByRole::class,
             ByCountry::class,
         ];

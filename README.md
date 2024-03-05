@@ -29,3 +29,9 @@ composer install
 # 运行单元测试 
 php artisan test -p
 ```
+
+## 相关视频
+
+- [Laravel Pipelines: Build an Api](https://www.youtube.com/watch?v=1RzqbiGVH24)
+
+- [Laravel Pipeline Pattern - when to use it and how to use it](https://www.youtube.com/watch?v=FByQN_d876c)

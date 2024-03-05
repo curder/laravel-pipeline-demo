@@ -5,6 +5,25 @@
 
 Laravel Pipeline 的简单示例。
 
+```php
+public function __invoke(Request $request)
+{
+    $pipelines = [
+        ByName::class,
+        ByRole::class,
+        ByCountry::class,
+    ];
+
+    $users = Pipeline::send(User::query())
+        ->through($pipelines)
+        ->thenReturn()
+        ->orderByDesc('id')
+        ->paginate();
+
+    return UsersResource::collection($users);
+}
+```
+
 ## 项目初始化
 
 ```bash

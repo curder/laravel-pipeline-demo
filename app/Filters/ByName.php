@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
-class ByName
+final class ByName
 {
     public function __construct(protected Request $request)
     {

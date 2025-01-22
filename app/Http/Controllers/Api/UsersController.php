@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\Filters\ByCountry;
+use App\Models\User;
 use App\Filters\ByName;
 use App\Filters\ByRole;
-use App\Http\Resources\UsersResource;
-use App\Models\User;
+use App\Filters\ByCountry;
 use Illuminate\Http\Request;
+use App\Http\Resources\UsersResource;
 use Illuminate\Support\Facades\Pipeline;
 
 final class UsersController

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Filters;
 
 use Closure;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 final class ByName
 {

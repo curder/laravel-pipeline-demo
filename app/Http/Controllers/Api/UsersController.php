@@ -17,9 +17,9 @@ final class UsersController
     public function __invoke(Request $request)
     {
         $pipelines = [
-            ByName::class,
-            ByRole::class,
-            ByCountry::class,
+            new ByName($request->get('name')),
+            new ByRole($request->get('role')),
+            new ByCountry($request->get('country')),
         ];
 
         $users = Pipeline::send(User::query())

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Filters;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
 final class ByRole
 {
-    public function __construct(protected Request $request)
+    public function __construct(protected ?string $role)
     {
         //
     }
@@ -19,8 +18,8 @@ final class ByRole
     {
         return $next($query)
             ->when(
-                $this->request->has('role'),
-                fn ($query) => $query->where('role', $this->request->get('role'))
+                $this->role,
+                fn ($query) => $query->where('role', $this->role)
             );
     }
 }

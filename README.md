@@ -12,6 +12,7 @@ public function __invoke(Request $request)
         new ByName($request->get('name')),
         new ByRole($request->get('role')),
         new ByCountry($request->get('country')),
+        SortUsers::class,
     ];
 
     $users = Pipeline::send(User::query())
